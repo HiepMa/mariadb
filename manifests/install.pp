@@ -6,21 +6,15 @@ class mariadb::install{
     mode  => '0755',
     owner => 'root',
     group => 'root',
-    notify =>  Exec['run_add'],
+    notify =>  Exec['run_add','run_update','run_install'],
   }
   exec { 'run_add':
     command => "/bin/bash '/tmp/add_repo.sh'",
   }
-  file { "install_MariaDB" :
-    ensure => present,
-    source => 'puppet:///modules/mariadb/install_mariaDB.sh',
-    path => '/tmp/install_mariaDB.sh',
-    mode => '0755',
-    owner => 'root',
-    group => 'root',
-    notify => Exec['run_install']
+  exec { 'run_update':
+    command => "/usr/bin/apt-get update"
   }
   exec { 'run_install':
-    command => "/usr/bin/apt-get update"
+    command => "/usr/bin/apt-get install mariadb-server rsync -y"
   }
 }
