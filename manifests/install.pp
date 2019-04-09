@@ -20,7 +20,7 @@ class mariadb::install{
     group => 'root',
     notify => Exec['run_install']
   }
-  exec { 'run_install'
+  exec { 'run_install':
     command => "/usr/bin/apt-get '/tmp/install_mariaDB.sh'"
   }
 }
