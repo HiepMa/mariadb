@@ -21,6 +21,6 @@ class mariadb::install{
     notify => Exec['run_install']
   }
   exec { 'run_install':
-    command => "/usr/bin/apt-get '/tmp/install_mariaDB.sh'"
+    command => "/usr/bin/apt-get update"
   }
 }
