@@ -10,6 +10,5 @@ class mariadb::config{
   }
   exec { 'run_config':
     command => "/bin/bash '/tmp/config_base.sh'",
-    refreshonly => true,
   }
 }

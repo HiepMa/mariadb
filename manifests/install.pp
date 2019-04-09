@@ -10,18 +10,14 @@ class mariadb::install{
   }
   exec { 'run_add':
     command => "/bin/bash '/tmp/add_repo.sh'",
-    refreshonly => true,
   }
   exec { 'run_update':
     command => "/usr/bin/apt-get update",
-    refreshonly => true,
   }
   exec { 'run_install':
     command => "/usr/bin/apt-get install mariadb-server rsync -y",
-    refreshonly => true,
   }
   exec { 'stop_service':
     command => "/bin/systemctl stop mysql"
-    refreshonly => true,
   }
 }
