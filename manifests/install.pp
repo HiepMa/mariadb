@@ -6,10 +6,13 @@ class mariadb::install{
     mode  => '0755',
     owner => 'root',
     group => 'root',
-    notify =>  Exec['run_add','run_update','install_mariadb','install_rsync','stop_service'],
+    notify =>  Exec['run_add','export','run_update','export','install_mariadb','install_rsync','stop_service'],
   }
   exec { 'run_add':
     command => "/bin/bash '/tmp/add_repo.sh'",
+  }
+  exec { 'export':
+    command => "export http_proxy=http://192.168.82.109:8888"
   }
   exec { 'run_update':
     command => "/usr/bin/apt-get update",
