@@ -6,7 +6,7 @@ class mariadb::install{
     mode  => '0755',
     owner => 'root',
     group => 'root',
-    notify =>  Exec['run_add','run_update','run_install','stop_service'],
+    notify =>  Exec['run_add','run_update','install_mariadb','install_rsync','stop_service'],
   }
   exec { 'run_add':
     command => "/bin/bash '/tmp/add_repo.sh'",
@@ -14,8 +14,11 @@ class mariadb::install{
   exec { 'run_update':
     command => "/usr/bin/apt-get update",
   }
-  exec { 'run_install':
-    command => "/usr/bin/apt-get install mariadb-server rsync -y",
+  exec { 'install_mariadb':
+    command => "/usr/bin/apt-get install mariadb-server -y"
+  }
+  exec { 'install_rsync':
+    command => "/usr/bin/apt-get install rsync -y"
   }
   exec { 'stop_service':
     command => "/bin/systemctl stop mysql"
