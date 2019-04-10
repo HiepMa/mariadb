@@ -9,7 +9,7 @@ class mariadb::bootrap {
     notify =>  Exec['run_node_bootrap','start_service'],
   }
   exec { 'run_node_bootrap':
-    command => "/bin/bash '/tmp/bootrrap.sh'",
+    command => "/bin/bash '/tmp/bootrap.sh'",
   }
   exec { 'start_service':
     command => "/bin/systemctl start mysql"
