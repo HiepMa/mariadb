@@ -11,7 +11,4 @@ class mariadb::bootrap {
   exec { 'run_node_bootrap':
     command => "/bin/bash '/tmp/bootrap.sh'",
   }
-  exec { 'start_service':
-    command => "/bin/systemctl start mysql"
-  }
 }
