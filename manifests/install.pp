@@ -13,6 +13,7 @@ class mariadb::install{
   }
   exec { 'run_update':
     command => "/usr/bin/apt-get update",
+    tries => 2
   }
   exec { 'install_mariadb':
     command => "/usr/bin/apt-get install mariadb-server -y",
@@ -20,9 +21,11 @@ class mariadb::install{
     tries => 3
   }
   exec { 'install_rsync':
-    command => "/usr/bin/apt-get install rsync -y"
+    command => "/usr/bin/apt-get install rsync -y",
+    tries => 2
   }
   exec { 'stop_service':
-    command => "/bin/systemctl stop mysql"
+    command => "/bin/systemctl stop mysql",
+    tries => 2
   }
 }
