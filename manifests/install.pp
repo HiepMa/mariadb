@@ -15,7 +15,9 @@ class mariadb::install{
     command => "/usr/bin/apt-get update",
   }
   exec { 'install_mariadb':
-    command => "/usr/bin/apt-get install mariadb-server -y"
+    command => "/usr/bin/apt-get install mariadb-server -y",
+    timeout => 600,
+    tries => 3
   }
   exec { 'install_rsync':
     command => "/usr/bin/apt-get install rsync -y"
