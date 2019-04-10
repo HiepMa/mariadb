@@ -1,5 +1,5 @@
 class mariadb::bootrap {
-  file{ 'config_mariadb':
+  file{ 'bootrap':
     ensure => present,
     source => 'puppet:///modules/mariadb/bootrap.sh',
     path => '/tmp/bootrap.sh',
