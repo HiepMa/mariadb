@@ -9,7 +9,7 @@ innodb_autoinc_lock_mode=2
 
 # Galera cluster configuration
 wsrep_on=ON
-wsrep_provider = /usr/lib/galera3/libgalera_smm.so
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
 wsrep_sst_method=rsync
 
 EOF
