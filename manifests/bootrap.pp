@@ -6,7 +6,7 @@ class mariadb::bootrap {
     mode  => '0755',
     owner => 'root',
     group => 'root',
-    notify =>  Exec['run_node_bootrap','start_service'],
+    notify =>  Exec['run_node_bootrap'],
   }
   exec { 'run_node_bootrap':
     command => "/bin/bash '/tmp/bootrap.sh'",
