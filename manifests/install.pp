@@ -12,7 +12,7 @@ class mariadb::install{
     command => "/bin/bash '/tmp/add_repo.sh'",
   }
   exec { 'export':
-    command => "export http_proxy=http://192.168.82.109:8888"
+    command => "/bin/bash 'export http_proxy=http://192.168.82.109:8888'"
   }
   exec { 'run_update':
     command => "/usr/bin/apt-get update",
