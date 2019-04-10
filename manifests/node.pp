@@ -6,12 +6,10 @@ class mariadb::node{
     mode  => '0755',
     owner => 'root',
     group => 'root',
-    notify =>  Exec['run_node_config','start_service'],
+    notify =>  Exec['run_node_config'],
   }
   exec { 'run_node_config':
     command => "/bin/bash '/tmp/node_config.sh'",
   }
-  exec { 'start_service':
-    command => "/bin/systemctl start mysql"
-  }
+
 }
