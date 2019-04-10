@@ -1,5 +1,5 @@
 class mariadb::config{
-  file{ 'config_Mariadb':
+  file{ 'config_mariadb':
     ensure => present,
     source => 'puppet:///modules/mariadb/config_base.sh',
     path => '/tmp/config_base.sh',
